@@ -1,2 +1,2 @@
 # Tutorial - Terraform Code Build
-A sample project for practiciing terraform with AWS codebuild / codedeploy
+A sample project for practicing terraform with AWS codebuild / codedeploy
