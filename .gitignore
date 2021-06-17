@@ -1,1 +1,6 @@
-site/vendor
+terraform.tfstate.backup
+.terraform
+terraform.tfvars
+*.tfstate
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
