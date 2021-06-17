@@ -29,9 +29,13 @@ export AWS_SECRET_ACCESS_KEY=xxx
 
 7. Wait for Terraform to deploy, and look at the results in the web console.
 
-8. Check that you can hit the deployed EC2 server using the web_port specified (defualt of 8080).
+8. Make a note of the outputs. E.g. `load_balancer_url`, `simple_server_ip`, and `web_port`.
 
-9. Run `terraform destroy` to spin everything down again.
+9. Check that you can hit the deployed EC2 server (`simple_server_ip`) using the `web_port` specified.
+
+10. Check that you can hit the servers behind the load balancer by hitting the outputted `load_balancer_url` (along with the `web_port`), in your browser
+
+11. Run `terraform destroy` to spin everything down again.
 
 
 ## Misc
