@@ -1,4 +1,4 @@
-# Tutorial - Terraform Code Build
+# Tutorial - Terraform Example
 An example of deploying an EC2 webserver to AWS through terraform. This demonstrates:
 
 * Ability to break up configuration over multiple files
