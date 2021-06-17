@@ -8,19 +8,19 @@ variable "ssh_public_key" {
 }
 
 variable "web_port" {
-    type = "integer"
+    type = number
     description = "The port to run the webserver on."
     default = 8080
 }
 
 variable "aws_region" {
-    type = "string"
+    type = string
     description = "The region to deploy to. E.g. eu-west-2 for London."
     default = "eu-west-2"
 }
 
 variable "ami" {
-    type = "string"
+    type = string
     description = "The AMI ID to deploy for the server. This AMI needs to be available in the region specified earlier."
     default = "ami-05c424d59413a2876"
 }
