@@ -41,4 +41,4 @@ export AWS_SECRET_ACCESS_KEY=xxx
 ## Misc
 Initially, I used t2.micro instances for this, but they deploy so slowly that it makes it appear that
 this doesn't work. Changing to a t3a.micro instance makes a HUGE difference, and still only
-costs pennies if you destroy everything (``terraform destroy`) within minutes.
+costs pennies if you destroy everything (`terraform destroy`) within minutes.
