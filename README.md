@@ -42,3 +42,14 @@ export AWS_SECRET_ACCESS_KEY=xxx
 Initially, I used t2.micro instances for this, but they deploy so slowly that it makes it appear that
 this doesn't work. Changing to a t3a.micro instance makes a HUGE difference, and still only
 costs pennies if you destroy everything (`terraform destroy`) within minutes.
+
+### Terraform Lock File
+The `.terraform.lock.hcl` lock file is in the `.gitignore` file as this codebase 
+is supposed to be a template for others and I don't wish to accidentally commit my lock file.
+When creating a project from this codebase, be sure to remove this and commit the `.terraform.lock.hcl`
+to your codebase. Terraform explicitly tells you to do this with the following message:
+
+> Terraform has created a lock file .terraform.lock.hcl to record the provider selections it made 
+above. Include this file in your version control repository so that Terraform can guarantee to make 
+the same selections by default when you run "terraform init" in the future.
+
