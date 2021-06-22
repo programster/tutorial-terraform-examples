@@ -1,12 +1,15 @@
-# Tutorial - Terraform Example
-An example of deploying an EC2 webserver to AWS through terraform. This demonstrates:
+## Terraform Examples
+This repository contains examples of Terraform deployments.
+Simply navigate into one of the relevant example directory and run the instruction steps listed below.
 
-* Ability to break up configuration over multiple files
-* Ability to deploy EC2 on its own
-* Ability to deploy multiple EC2s as part of an autoscaling group and load balancer.
+These examples demonstrate:
+
+* The ability to break up configuration over multiple files
+* The ability to deploy EC2 on its own
+* The ability to deploy multiple EC2s as part of an autoscaling group and load balancer.
 * How to make use of variables.
 * The use of a cloud-init configuration to setup EC2 once its deployed (pulling and deploying a Docker image for a webserver).
-* Ability to perform variable substitution into the cloud init script.
+* The ability to perform variable substitution into the cloud init script.
 
 
 ## Instructions
@@ -39,17 +42,16 @@ export AWS_SECRET_ACCESS_KEY=xxx
 
 
 ## Misc
-Initially, I used t2.micro instances for this, but they deploy so slowly that it makes it appear that
+Initially, I used t2.micro instances for these examples, but they deploy so slowly that it makes it appear that
 this doesn't work. Changing to a t3a.micro instance makes a HUGE difference, and still only
 costs pennies if you destroy everything (`terraform destroy`) within minutes.
 
 ### Terraform Lock File
-The `.terraform.lock.hcl` lock file is in the `.gitignore` file as this codebase 
+The `.terraform.lock.hcl` lock file is in the `.gitignore` file as this codebase
 is supposed to be a template for others and I don't wish to accidentally commit my lock file.
 When creating a project from this codebase, be sure to remove this and commit the `.terraform.lock.hcl`
 to your codebase. Terraform explicitly tells you to do this with the following message:
 
-> Terraform has created a lock file .terraform.lock.hcl to record the provider selections it made 
-above. Include this file in your version control repository so that Terraform can guarantee to make 
+> Terraform has created a lock file .terraform.lock.hcl to record the provider selections it made
+above. Include this file in your version control repository so that Terraform can guarantee to make
 the same selections by default when you run "terraform init" in the future.
-
