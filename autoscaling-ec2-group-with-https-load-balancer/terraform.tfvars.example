@@ -1,0 +1,4 @@
+web_port = 8080
+ssh_public_key = "ssh-rsa AAAA"
+certificate_arn = "arn:aws:acm:eu-west-2..."
+
