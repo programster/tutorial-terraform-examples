@@ -65,6 +65,6 @@ resource "aws_instance" "my_ec2_server" {
 # Create an elastic IP and assign it to the server.
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 resource "aws_eip" "my_elastic_ip" {
-  instance = aws_instance.my_ec2_server.id
-  vpc      = true
+    instance = aws_instance.my_ec2_server.id
+    vpc      = true
 }
