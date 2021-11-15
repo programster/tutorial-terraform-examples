@@ -11,19 +11,8 @@ resource "aws_vpc" "my_vpc" {
 }
 
 
-// Create a subnet or instances within the VPC
-resource "aws_subnet" "my_vpc_subnet" {
-    vpc_id      = aws_vpc.my_vpc.id
-    cidr_block  = "10.0.0.0/24" // Must be a subnet of the cidr_block specified in "my_vpc"
-    depends_on  = [aws_internet_gateway.my_internet_gateway]
-
-    // tell AWS to NOT assign public IPs to instances deployed within this subnet. 
-    // https://bit.ly/2YxggRu
-    map_public_ip_on_launch = false 
-}
-
-
-// Create an internet gateway that is connected to the VPC
+// Create an internet gateway that the VPC can connect to, in order to access
+// the internet.
 resource "aws_internet_gateway" "my_vpc_internet_gateway" {
     vpc_id = aws_vpc.my_vpc.id
 
@@ -31,6 +20,21 @@ resource "aws_internet_gateway" "my_vpc_internet_gateway" {
         Name = "My internet gateway"
     }
 }
+
+
+// Create a subnet or instances within the VPC
+resource "aws_subnet" "my_vpc_subnet" {
+    vpc_id      = aws_vpc.my_vpc.id
+    cidr_block  = "10.0.0.0/24" // Must be a subnet of the cidr_block specified in "my_vpc"
+    depends_on  = [aws_internet_gateway.my_vpc_internet_gateway]
+
+    // tell AWS to NOT assign public IPs to instances deployed within this subnet. 
+    // https://bit.ly/2YxggRu
+    map_public_ip_on_launch = false 
+}
+
+
+
 
 
 // Create an elastic IP for the gateway to use
