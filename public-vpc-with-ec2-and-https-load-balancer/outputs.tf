@@ -13,5 +13,5 @@ output "load_balancer_url" {
 # output the IP of the singly deployed server. 
 # E.G. the one not managed by an autoscaling group and behind an elastic load balancer)
 output "elastic_ip" {
-    value = aws_instance.my_ec2_server.public_ip
+    value = aws_eip.my_elastic_ip.public_ip
 }
