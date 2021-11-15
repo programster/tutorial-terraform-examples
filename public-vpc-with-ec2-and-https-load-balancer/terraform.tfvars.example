@@ -16,6 +16,10 @@ ssh_public_key="ssh-rsa AAAAB...."
 aws_region="eu-west-2"
 
 
+# Specify the AMI to deploy. Must releate to the chosen region and be amd64.
+ami="ami-0fdf70ed5c34c5f52"
+
+
 # Specify the ARN of the certificate to deploy the server behind.
 # This certificate can/should be in the same region, rather than 
 # having to be north virginia.
