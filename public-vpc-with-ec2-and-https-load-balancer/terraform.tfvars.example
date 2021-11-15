@@ -1,0 +1,26 @@
+# This is an example tfvars file.
+# Feel free to remove the .example extension
+# and fill in the variables for deployment
+
+
+# Specify a name for the VPC
+vpc_name="My VPC"
+
+
+# Specify the public SSH key you wish to be able to connect 
+# to the EC2 server with
+ssh_public_key="ssh-rsa AAAAB...."
+
+
+# The region to deploy the server to
+aws_region="eu-west-2"
+
+
+# Specify the AMI to deploy. Must releate to the chosen region and be amd64.
+ami="ami-0fdf70ed5c34c5f52"
+
+
+# Specify the ARN of the certificate to deploy the server behind.
+# This certificate can/should be in the same region, rather than 
+# having to be north virginia.
+certificate_arn="arn:aws:acm:eu-west-2:xxxxxxxxxxxx:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
