@@ -45,9 +45,11 @@ data "template_file" "my_template_file" {
 
 
 resource "aws_instance" "my_ec2_server" {
-    # Ubuntu AMI in London
-    ami                    = var.ami
-    instance_type          = "t3a.micro"
+    ami = var.ami
+    instance_type = "t3a.micro"
+
+    # Ensure the instance deploys to a subnet that is within our custom VPC
+    subnet_id = aws_subnet.my_vpc_subnet.id
     
     # Set the security group to the one we defined above.
     vpc_security_group_ids = [aws_security_group.my_hello_world_security_group.id]

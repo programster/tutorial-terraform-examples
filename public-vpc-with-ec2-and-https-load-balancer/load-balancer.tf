@@ -6,25 +6,11 @@
 
 
 
-
-# Declare our VPC resource, using our default VPC
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
-data "aws_vpc" "my_default_vpc" {
-    default = true
-}
-
-
-# Declare a subnet reesource, using the subnets from my default VPC
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet_ids
-data "aws_subnet_ids" "my_default_subnets" {
-    vpc_id = data.aws_vpc.my_default_vpc.id
-}
-
-
 # Create a security group for the load balancer to use
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 resource "aws_security_group" "my_load_balancer_security_group" {
     name = "myLoadBalancer"
+    vpc_id = aws_vpc.my_vpc.id
     
     # Allow inbound http
     ingress {
@@ -55,17 +41,25 @@ resource "aws_security_group" "my_load_balancer_security_group" {
 # Create a target group for the load balancert to target
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group
 resource "aws_lb_target_group" "my_load_balancer_target_group" {
-    name = "myAutoScalingTargetGroup"
+    name = "myLoadBalancerTargetGroup"
     port = 80
     protocol = "HTTP"
-    vpc_id = data.aws_vpc.my_default_vpc.id
+    vpc_id = aws_vpc.my_vpc.id
     
     health_check {
         path = "/"
         protocol = "HTTP"
         matcher = "200"
+
+        # How long to wait between checks
         interval = 15
+
+        # How long to wait for a response to come back when checking status
+        # before considering it a failure/unhealthy check.
         timeout = 3
+
+        # These specify the number of checks to pass/fail to be considered
+        # health/unhealthy
         healthy_threshold = 2
         unhealthy_threshold = 2
      }
@@ -74,10 +68,9 @@ resource "aws_lb_target_group" "my_load_balancer_target_group" {
 
 # Register the EC2 server's elastic IP as part of the target group
 resource "aws_lb_target_group_attachment" "my_target_group_attachment" {
-  target_group_arn = aws_lb_target_group.my_load_balancer_target_group.arn
-  #target_id        = aws_instance.test.id
-  target_id = aws_instance.my_ec2_server.id
-  port = 80
+    target_group_arn = aws_lb_target_group.my_load_balancer_target_group.arn
+    target_id = aws_instance.my_ec2_server.id
+    port = 80
 }
 
 
@@ -86,7 +79,7 @@ resource "aws_lb_target_group_attachment" "my_target_group_attachment" {
 resource "aws_lb" "my_load_balancer" {
     name = "myHttpLoadBalancer"
     load_balancer_type = "application"
-    subnets = data.aws_subnet_ids.my_default_subnets.ids
+    subnets = [aws_subnet.my_vpc_subnet.id, aws_subnet.my_vpc_subnet2.id]
     security_groups = [aws_security_group.my_load_balancer_security_group.id]
 }
 

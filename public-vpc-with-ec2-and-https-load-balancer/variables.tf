@@ -19,6 +19,18 @@ variable "aws_region" {
     default = "eu-west-2"
 }
 
+variable "subnet_1_availability_zone_id" {
+    type = string
+    description = "The availability zone ID for the first subnet in the VPC. This must be a different from the second subnet, and correspond to the aws_region."
+    default = "euw2-az1"
+}
+
+variable "subnet_2_availability_zone_id" {
+    type = string
+    description = "The availability zone ID for the second subnet in the VPC. This must be a different from the first subnet, and correspond to the aws_region."
+    default = "euw2-az2"
+}
+
 variable "ami" {
     type = string
     description = "The AMI ID to deploy for the server. This AMI needs to be available in the region specified earlier."
