@@ -52,4 +52,17 @@ resource "aws_subnet" "my_vpc_subnet2" {
 }
 
 
+// Set the default routing table for the VPC to route through the internet.
+resource "aws_default_route_table" "my_routing_table" {
+    default_route_table_id = aws_vpc.my_vpc.default_route_table_id
+
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.my_vpc_internet_gateway.id
+    }
+    
+    tags = {
+        Name = "myRoutingTable"
+    }
+}
 
