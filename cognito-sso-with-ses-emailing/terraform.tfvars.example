@@ -1,0 +1,82 @@
+# This is an example tfvars file.
+# Feel free to remove the .example extension
+# and fill in the variables for deployment
+
+
+# The region to deploy the congnito user pool to.
+aws_region="eu-west-2"
+
+
+# The AWS access key for Terraform to use
+access_key=""
+
+
+# The secret key for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
+
+# The name to give the cognito pool.
+pool_name=""
+
+
+# The name you wish to give the client of your user pool.
+client_name=""
+
+
+# The minimum length for user passwords.
+password_min_length=12
+
+
+# Specify whether passwords MUST have a lowercase letter.
+password_require_lowercase="true"
+
+
+# Specify whether passwords MUST have contain a number.
+password_require_numbers="false"
+
+
+# Specify whether passwords MUST have contain at least one symbol.
+password_require_symbols="true"
+
+
+# Specify whether passwords MUST have contain at least uppercase letter.
+password_require_uppercase="true"
+
+
+# Specify the number of days temporary passwords are valid for.
+password_temp_validity_days=1
+
+
+# Whether you wish to allow users to register. If false, only admins can create 
+# user accounts.
+allow_user_signup="false"
+
+
+# The ARN of the SES service which should be handling emails.
+ses_arn=""
+
+
+# Specify the email address you wish for emails to be sent from. 
+# E.g. "john@example.com" or "John Smith <john@example.com>"
+email_from_address="no-reply@verificationemail.com"
+
+
+# Specify the email address that you wish to act as the reply-to address. 
+# E.g. "john@example.com" or "John Smith <john@example.com>"
+email_reply_to_address=""
+
+
+# Specify if you wish to force users to use MFA ("ON"), prevent users from 
+# using MFA ("OFF"), or allow users to choose whether to use MFA ("OPTIONAL").
+mfa_configuration="OPTIONAL"
+
+
+# Specify if the list of URLs that the client should support sending the user to 
+# once the user has logged out.
+client_logout_urls=["http://localhost/logout-response", "https://localhost/logout-response"]
+
+
+# Specify the list of URLs that the client should support sending the user to 
+# once they have successfully logged in. AWS Docs: https://go.aws/3OGgsTz
+client_callback_urls=["http://localhost/login-response", "https://localhost/login-response"]
+

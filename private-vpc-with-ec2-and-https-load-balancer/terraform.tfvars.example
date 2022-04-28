@@ -1,0 +1,33 @@
+# This is an example tfvars file.
+# Remove the .example extension, and fill in the variables.
+
+
+# The AWS IAM access key for Terraform to use for deploying AWS infrastructure.
+access_key=""
+
+
+# The AWS IAM secret for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
+
+# The region to deploy to. E.g. eu-west-2 for London.
+aws_region="eu-west-2"
+
+
+# The name you wish to give your VPC."
+vpc_name=""
+
+
+# The public key that corresponds to the private SSH key you would want to use 
+# to log into the EC2 instances with, should you need to. Should start like 
+# 'ssh-rsa AAAA...'
+ssh_public_key=""
+
+
+# The AMI ID to deploy for the server. This AMI needs to be available in the region specified earlier.
+ami="ami-05c424d59413a2876"
+
+
+# Provide the ARN of the SSL certificate to assign to your load balancer. 
+# This certificate needs to be in the same region and be 2048 bit or less.
+certificate_arn=""

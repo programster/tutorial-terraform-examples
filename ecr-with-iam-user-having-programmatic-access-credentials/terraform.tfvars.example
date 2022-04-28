@@ -1,2 +1,8 @@
+# The AWS IAM access key for Terraform to use for deploying AWS infrastructure.
+access_key=""
+
+# The AWS IAM secret for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
 aws_region = "eu-west-2"
 registry_name = "my-registry"

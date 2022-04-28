@@ -2,6 +2,22 @@
 # should be specified here. E.g. if you wish the administrator to set the SSH key, and how many
 # instances to deploy etc.
 
+variable "aws_region" {
+    type = string
+    description = "The region to deploy to. E.g. eu-west-2 for London."
+    default = "eu-west-2"
+}
+
+variable "access_key" {
+    type = string
+    description = "The access key for Terraform to use for deploying AWS infrastructure."
+}
+
+variable "secret_key" {
+    type = string
+    description = "The secret key for Terraform to use for deploying AWS infrastructure."
+}
+
 variable "vpc_name" {
     type = string
     description = "The name you wish to give your VPC."
@@ -11,12 +27,6 @@ variable "vpc_name" {
 variable "ssh_public_key" {
     type = string
     description = "The public key that corresponds to the private SSH key you would want to use to log into the EC2 instances with, should you need to. Should start like 'ssh-rsa AAAA...'"
-}
-
-variable "aws_region" {
-    type = string
-    description = "The region to deploy to. E.g. eu-west-2 for London."
-    default = "eu-west-2"
 }
 
 variable "ami" {

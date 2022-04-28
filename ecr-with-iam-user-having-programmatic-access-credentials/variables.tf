@@ -8,6 +8,16 @@ variable "aws_region" {
     default = "eu-west-2"
 }
 
+variable "access_key" {
+    type = string
+    description = "The access key for Terraform to use for deploying AWS infrastructure."
+}
+
+variable "secret_key" {
+    type = string
+    description = "The secret key for Terraform to use for deploying AWS infrastructure."
+}
+
 variable "registry_name" {
     type = string
     description = "Provide the name for the registry you wish to create."

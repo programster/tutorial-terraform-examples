@@ -3,6 +3,14 @@
 # and fill in the variables for deployment
 
 
+# The AWS IAM access key for Terraform to use for deploying AWS infrastructure.
+access_key=""
+
+
+# The AWS IAM secret for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
+
 # Specify a name for the VPC
 vpc_name="My VPC"
 

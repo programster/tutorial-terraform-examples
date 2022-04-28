@@ -1,3 +1,9 @@
+# The AWS IAM access key for Terraform to use for deploying AWS infrastructure.
+access_key=""
+
+# The AWS IAM secret for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
 web_port = 8080
 ssh_public_key = "ssh-rsa AAAA"
 certificate_arn = "arn:aws:acm:eu-west-2..."
