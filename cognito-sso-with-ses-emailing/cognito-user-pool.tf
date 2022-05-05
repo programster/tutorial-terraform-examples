@@ -78,3 +78,14 @@ resource "aws_cognito_user_pool" "my_user_pool" {
         temporary_password_validity_days = var.password_temp_validity_days
     }
 }
+
+
+# Create a domain in Cognito for users to sign in at. 
+resource "aws_cognito_user_pool_domain" "my_user_pool_domain" {
+
+    # Set the part of the domain that you can control. E.g. this will be
+    # {var.user_pool_auth_subdomain}.auth.{region}.amazoncongito.com
+    domain       = var.user_pool_auth_subdomain
+
+    user_pool_id = aws_cognito_user_pool.my_user_pool.id
+}

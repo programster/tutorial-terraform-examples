@@ -102,3 +102,8 @@ variable "client_callback_urls" {
     description = "Specify the list of URLs that the client should support sending the user to once they have successfully logged in. AWS Docs: https://go.aws/3OGgsTz"
     default = ["http://localhost/login-response"]
 }
+
+variable "user_pool_auth_subdomain" {
+    type = string
+    description = "Specify the subdomain for the authentication UI. (Where users will login). E.g. 'my-service-name'"
+}

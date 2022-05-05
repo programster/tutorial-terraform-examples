@@ -13,3 +13,14 @@ output "client_secret" {
     value = aws_cognito_user_pool_client.my_user_pool_client.client_secret
     sensitive=true
 }
+
+
+# Output the endpoint for the cognito SSO.
+output "sso_endpoint" {
+    value = aws_cognito_user_pool.my_user_pool.endpoint
+}
+
+
+output "sso_auth_url" {
+    value = "https://${aws_cognito_user_pool_domain.my_user_pool_domain.domain}.auth.${var.aws_region}.amazoncognito.com"
+}

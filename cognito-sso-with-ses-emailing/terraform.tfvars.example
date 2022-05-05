@@ -80,3 +80,6 @@ client_logout_urls=["http://localhost/logout-response", "https://localhost/logou
 # once they have successfully logged in. AWS Docs: https://go.aws/3OGgsTz
 client_callback_urls=["http://localhost/login-response", "https://localhost/login-response"]
 
+
+# Specify the subdomain for the authentication UI. (Where users will login). E.g. 'my-service-name'
+user_pool_auth_subdomain="my-service-name"
