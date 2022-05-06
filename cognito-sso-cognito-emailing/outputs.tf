@@ -3,6 +3,12 @@
 
 
 # Output the ID of the user pool client
+output "pool_id" {
+    value = aws_cognito_user_pool.my_user_pool.id
+}
+
+
+# Output the ID of the user pool client
 output "client_id" {
     value = aws_cognito_user_pool_client.my_user_pool_client.id
 }
