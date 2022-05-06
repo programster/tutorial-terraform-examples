@@ -23,6 +23,9 @@ resource "aws_cognito_user_pool" "my_user_pool" {
         case_sensitive = false
     }
 
+    # Specify that we are using the user's email address as their username
+    username_attributes = ["email"]
+
     mfa_configuration = var.mfa_configuration
 
     # Use software based MFA (e.g. google authenticator)
