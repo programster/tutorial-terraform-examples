@@ -1,0 +1,108 @@
+# This is an example tfvars file.
+# Remove the .example extension, and fill in the variables.
+
+
+# The AWS IAM access key for Terraform to use for deploying AWS infrastructure.
+access_key=""
+
+
+# The AWS IAM secret for Terraform to use for deploying AWS infrastructure.
+secret_key=""
+
+
+# The region to deploy to. E.g. eu-west-2 for London.
+aws_region="eu-west-2"
+
+
+# The prefix for the availability zones. This is related to the aws_region. 
+# E.g. if aws_region is 'eu-west-2', then this would be 'euw2'
+availability_zone_prefix="euw2"
+
+
+# Specify the name for the VPC
+vpc_name = ""
+
+
+# Specify the name for the parameter group that will be created and assigned to 
+# your database.
+db_parameter_group_name = "my-demo-parameter-group"
+
+
+# The name to give the database. E.g. the value you will pass to '-d' when 
+# connecting with the psql CLI.
+# This must begin with a letter and contain only alphanumeric characters
+# E.g. no hyphens or underscores etc.
+db_name = "myDemoRds"
+
+
+# Specify an identifier for the database. This needs to be unique and will form 
+# part of the outputted DNS address that one will connect to.
+# Only lowercase alphanumeric characters and hyphens allowed.
+db_identifier = "demo-rds"
+
+
+# "Specify the instance size to deploy for the database. 
+# Refer here: https://aws.amazon.com/rds/instance-types/"
+db_instance_size = "db.t3.micro"
+
+
+# The username for database authentication.
+db_username = ""
+
+
+# The password for the master user of the database.
+db_password = ""
+
+
+# Specify how many GB you wish to be allocated for the RDS upon deployment.
+db_inital_allocated_storage = 10
+
+
+# Specify how many GB you would like to allow AWS to expand your RDS to as it 
+# runs out of storage. This is for storage autoscaling: 
+# https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html
+db_max_allowed_storage = 20
+
+
+# Define disk storage type. 
+# "standard" - magnetic. 
+# "gp2" - general purpose SSD. 
+# "io1" - provisioned IOPS SSD.
+db_storage_type = "gp2"
+
+
+# Specify whether to apply changes immediately (true) 
+# or to apply during the next maintenance window (false).
+db_apply_changes_immediately = true
+
+
+# Specify the port the database should be accessible on
+db_port = 5432
+
+
+# Specify the availability zone letter the database should be deployed to. 
+# This relates to the aws_region variable. E.g. specify 'a', 'b', or 'c'
+db_availability_zone_letter = "a"
+
+
+# Specify the engine version the database should use.
+db_engine_version = "14.2"
+
+
+# The window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". 
+# Eg: "Mon:00:00-Mon:03:00".
+db_maintenance_window = "Sun:01:00-Sun:04:00"
+
+
+# Specify the daily time range (in UTC) during which automated backups are 
+# created if they are enabled. Must not overlap with db_maintenance_window.
+db_backup_window = "00:00-01:00"
+
+
+# Specity the number of days to retain backups for. Must be between 0 and 35.
+backup_retention_period = 35
+
+
+# Specify if the database should be multi-AZ.
+db_multi_az = false
+
