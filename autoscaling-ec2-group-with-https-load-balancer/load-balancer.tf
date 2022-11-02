@@ -49,9 +49,18 @@ resource "aws_lb_target_group" "my_auto_scaling_target_group" {
         path = "/"
         protocol = "HTTP"
         matcher = "200"
+
+        # Approximate amount of time, in seconds, between health checks of an individual target.
+        # Minimum value 5 seconds, Maximum value 300 seconds.
         interval = 15
+
+        # Amount of time, in seconds, during which no response means a failed health check.
         timeout = 3
+
+        # Number of consecutive health checks successes required before considering an unhealthy target healthy.
         healthy_threshold = 2
+
+        # Number of consecutive health check failures required before considering the target unhealthy
         unhealthy_threshold = 2
      }
 }
@@ -68,6 +77,9 @@ resource "aws_autoscaling_group" "my_auto_scaling_group" {
     # with 200 code. IF use "EC2" instead, then just checks EC2 server is up, not that website
     # is running.
     health_check_type = "ELB"
+
+    # Time (in seconds) after instance comes into service before checking health.
+    health_check_grace_period = 400
     
     # Specify the minimum and maximum number of EC2 instances to maintain.
     min_size = 2
