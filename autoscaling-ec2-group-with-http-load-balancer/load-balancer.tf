@@ -12,7 +12,12 @@ resource "aws_launch_configuration" "my_launch_configuration" {
     image_id        = var.ami
     instance_type   = "t3a.micro"
     security_groups = [aws_security_group.my_hello_world_security_group.id]
-    user_data       = data.template_file.my_template_file.rendered
+
+    # Provide a cloud init file for telling the EC2 how to set up on first boot.
+    user_data = templatefile("./cloud-init.yml", {
+        ssh_public_key = var.ssh_public_key
+        web_port       = var.web_port
+    })
 
     # When swapping out instances, launch new ones before destroying old ones so there is no
     # downtime. You may need to plan for this if you have database migrations though.

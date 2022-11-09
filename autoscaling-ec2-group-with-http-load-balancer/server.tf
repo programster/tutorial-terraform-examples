@@ -33,18 +33,6 @@ resource "aws_security_group" "my_hello_world_security_group" {
 }
 
 
-# Create a template file for the cloud init configuration. This is necessary because we wish to
-# perform variable substitution in order to allow the user to specify the public SSH Key.
-data "template_file" "my_template_file" {
-    template = file("./cloud-init.yml")
-
-    vars = {
-        ssh_public_key = var.ssh_public_key
-        web_port = var.web_port
-    }
-}
-
-
 resource "aws_instance" "my_ec2_server" {
     # Ubuntu AMI in London
     ami                    = var.ami
@@ -56,7 +44,10 @@ resource "aws_instance" "my_ec2_server" {
     # When the server starts, run our cloud init configuration file with the variables 
     # substituted in rendering. If there were no variables, you could just load the file
     # directly with 'user_data = file("./cloud-init.conf")'
-    user_data = data.template_file.my_template_file.rendered
+    user_data = templatefile("./cloud-init.yml", {
+        ssh_public_key = var.ssh_public_key
+        web_port = var.web_port
+    })
 
     # Tag the server so we will recognize it when we log into the web console
     tags = {
