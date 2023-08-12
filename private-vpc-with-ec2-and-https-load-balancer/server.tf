@@ -45,6 +45,11 @@ resource "aws_instance" "my_ec2_server" {
         ssh_public_key = var.ssh_public_key
         web_port = 80
     })
+    
+    # Set the size of the root disk to 20 GB
+    root_block_device {
+        volume_size = 20
+    }
 
     # Tag the server so we will recognize it when we log into the web console
     tags = {
