@@ -1,0 +1,11 @@
+# Specify the database connection details
+db_host = ""
+db_master_username = "root"
+db_master_password = ""
+db_port = 3306
+
+
+# Specify the details of the database and user we wish to create.
+new_database_name = "terraform_created_database"
+new_user = "terraform_created_user"
+new_users_password = "terraform_created_users_password"
