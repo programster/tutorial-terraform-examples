@@ -1,0 +1,13 @@
+# Specify the database connection details
+rabbitmq_host = "127.0.0.1"
+rabbitmq_master_username = "admin"
+rabbitmq_master_password = "rabbitMqTestPassword"
+rabbitmq_port = 5672
+
+
+# Specify the details of the database and user we wish to create.
+new_exchange_name = "terraform_created_exchange"
+new_queue_name = "terraform_created_queue"
+new_user = "terraform_created_user"
+new_users_password = "terraform_created_users_password"
+new_users_tags = ["administrator", "management"]
