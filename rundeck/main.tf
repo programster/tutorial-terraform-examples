@@ -63,7 +63,7 @@ resource "rundeck_project" "my_project" {
     default_node_executor_plugin = "sshj-ssh"
 
     extra_config = {
-        "project.label" = var.project_label
+        "project/label" = var.project_label
     }
 }
 
