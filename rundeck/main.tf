@@ -121,6 +121,10 @@ resource "rundeck_job" "my_job" {
     # Optionally filter your nodes based on tags.
     node_filter_query = "tags: apt"
 
+    # Specify whether nodes that match the filtering should be selected by default, or if the user will have to manually
+    # select the nodes before proceeding with the job.
+    nodes_selected_by_default = false
+
     # Run a command to output the percentage utilization on the root partition
     # Please refer to https://registry.terraform.io/providers/rundeck/rundeck/latest/docs/resources/job#shell_command
     command {
