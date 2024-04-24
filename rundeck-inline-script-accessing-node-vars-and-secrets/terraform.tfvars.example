@@ -1,0 +1,27 @@
+# Specify the location of the Rundeck server.
+rundeck_url = "http://127.0.0.1:4440/"
+
+# Specify the authentication details for Rundeck to connect and perform configuration with.
+rundeck_auth_username = "admin"
+rundeck_auth_password = "admin"
+
+# Specify the private key to connect to your servers with.
+# The SSH username is specified in the nodes configuration
+# This NEEDS to be in RSA PEM format, and not OpenSSH format
+# https://github.com/rundeck/rundeck/issues/4813
+ssh_private_key = <<-EOT
+-----BEGIN RSA PRIVATE KEY-----
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+-----END RSA PRIVATE KEY-----
+EOT
+
+# Specify details for the project Rundeck will set up.
+project_label = "My Project"
+project_slug_name = "my_project"
+notification_subscribers = []
+notification_webhooks = []
+
+# Specify your secret password/token
+my_secret_value = "mySecretPassword"
