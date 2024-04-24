@@ -1,0 +1,36 @@
+services:
+
+  rundeck:
+    image: rundeck/rundeck:4.17.6 # Set to rundeck 4 instead of 5 due to issue: https://github.com/rundeck/rundeck/issues/8779
+    container_name: rundeck
+    environment:
+      RUNDECK_DATABASE_DRIVER: org.postgresql.Driver
+      RUNDECK_DATABASE_USERNAME: rundeck
+      RUNDECK_DATABASE_PASSWORD: Rundeck123
+      RUNDECK_DATABASE_URL: jdbc:postgresql://postgres/rundeck?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      RUNDECK_GRAILS_URL: http://localhost:4440
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - "4440:4440"
+    volumes:
+      # Create an area for node definitions using files.
+      - ./node-definitions:/home/rundeck/node-definitions
+
+      # Create a volume for managing the authentication via a file
+      #- ./user-logins.txt:/home/rundeck/server/config/realm.properties
+
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-15.2-bullseye}
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=rundeck
+      - POSTGRES_USER=rundeck
+      - POSTGRES_PASSWORD=Rundeck123
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
