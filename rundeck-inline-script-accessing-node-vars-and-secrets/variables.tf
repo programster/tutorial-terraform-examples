@@ -7,16 +7,19 @@ variable "rundeck_url" {
 variable "rundeck_auth_username" {
   type = string
   description = "The username for Terraform/Tofu to connect to Rundeck with."
+  sensitive = true
 }
 
 variable "rundeck_auth_password" {
   type = string
   description = "The password for Terraform/Tofu to connect to Rundeck with."
+  sensitive = true
 }
 
 variable "ssh_private_key" {
   type = string
   description = "A private key to add to Rundeck for it to be able to SSH into your remote servers. The corresponding SSH username should be specified in the nodes configuration."
+  sensitive = true
 }
 
 variable "project_label" {
@@ -44,8 +47,9 @@ variable notification_webhooks {
 }
 
 variable my_secret_value {
-    type = string
-    description = "Some secret that needs to be kept safe, such as a bearer token or password."
+  type = string
+  description = "Some secret that needs to be kept safe, such as a bearer token or password."
+  sensitive = true
 }
 
 
